@@ -17,7 +17,7 @@ function Layout() {
             <NavBar/>
         </header>
         <main>
-            <div className="container">
+            <div className="container mx-auto">
                 <Outlet/>
             </div>
         </main>
