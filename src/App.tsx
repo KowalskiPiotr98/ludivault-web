@@ -1,3 +1,10 @@
+import './App.css';
+import NavBar from "./navBar.tsx";
+
 export default function App() {
-    return <></>
+    return <>
+        <header>
+            <NavBar/>
+        </header>
+    </>
 }
