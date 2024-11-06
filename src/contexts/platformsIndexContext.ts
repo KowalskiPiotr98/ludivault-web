@@ -8,7 +8,7 @@ export class PlatformsIndexContextHandler {
 
     setPlatformsInternal: stateUpdater<Platform[]>;
 
-    constructor(platforms: Platform[] | undefined, loading: boolean, setPlatforms: stateUpdater<Platform[]>) {
+    constructor(platforms: Platform[] | undefined, loading: boolean, setPlatforms: stateUpdater<Platform[] | undefined>) {
         this.platforms = platforms;
         this.loading = loading;
         this.setPlatformsInternal = setPlatforms;

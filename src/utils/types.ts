@@ -1,1 +1,3 @@
-export type stateUpdater<T> = (modifier: (prevState: T) => T) => void;
+import {Dispatch, SetStateAction} from "react";
+
+export type stateUpdater<T> = Dispatch<SetStateAction<T>>;
