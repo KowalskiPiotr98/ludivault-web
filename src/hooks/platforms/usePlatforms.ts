@@ -21,5 +21,5 @@ export default function usePlatforms() {
         return runDebounced(act);
     }, []);
 
-    return {platforms, loading};
+    return {platforms, setPlatforms, loading};
 }
