@@ -8,7 +8,7 @@ class PropTypes {
 }
 
 export default function EditButton({onClick, title = undefined}: PropTypes) {
-    return <Button className="px-1" title={title} onClick={onClick}>
+    return <Button type="button" className="px-1" title={title} onClick={onClick}>
         <FontAwesomeIcon icon={faPenToSquare}/>
     </Button>
 }

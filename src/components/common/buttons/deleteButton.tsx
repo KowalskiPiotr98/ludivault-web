@@ -31,6 +31,7 @@ export default function DeleteButton({onTrigger, disabled = false, title = undef
         onClick={trigger}
         disabled={disabled}
         onMouseLeave={reset}
+        type="button"
     >
         {clicked ? <FontAwesomeIcon icon={faSquareCheck}/> : <FontAwesomeIcon icon={faTrash}/>}
     </Button>
