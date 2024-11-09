@@ -27,7 +27,7 @@ export default function DeleteButton({onTrigger, disabled = false, title = undef
 
     return <Button
         className="px-1 text-danger"
-        title={title}
+        title={clicked ? "Click again to confirm" : title}
         onClick={trigger}
         disabled={disabled}
         onMouseLeave={reset}
