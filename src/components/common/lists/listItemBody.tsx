@@ -5,7 +5,7 @@ class PropTypes {
 }
 
 export default function ListItemBody({children}: PropTypes) {
-    return <div className="w-full p-1">
+    return <div className="flex w-full p-1">
         {children}
     </div>
 }

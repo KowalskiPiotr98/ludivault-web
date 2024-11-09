@@ -5,7 +5,7 @@ class PropTypes {
 }
 
 export default function ListItemHeader({children}: PropTypes) {
-    return <div className="w-full uppercase border-b p-2">
+    return <div className="w-full flex uppercase border-b p-2">
         {children}
     </div>
 }
