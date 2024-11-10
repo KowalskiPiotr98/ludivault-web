@@ -22,6 +22,10 @@ export class PlatformsIndexContextHandler {
         this.setPlatformsInternal(prevState => prevState?.filter(p => p.id !== platform.id));
     }
 
+    public addPlatform(platform: Platform) {
+        this.setPlatformsInternal(prevState => [...prevState ?? [], platform].sort(platformSortFunc));
+    }
+
     public setPlatforms(editor: (prevState: Platform[] | undefined) => Platform[]) {
         this.setPlatformsInternal(editor);
     }
