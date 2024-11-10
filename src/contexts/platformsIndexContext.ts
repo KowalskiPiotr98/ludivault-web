@@ -4,19 +4,27 @@ import {stateUpdater} from "../utils/types.ts";
 
 export class PlatformsIndexContextHandler {
     public platforms: Platform[] | undefined;
-    public loading: boolean;
 
     setPlatformsInternal: stateUpdater<Platform[] | undefined>;
 
-    constructor(platforms: Platform[] | undefined, loading: boolean, setPlatforms: stateUpdater<Platform[] | undefined>) {
+    constructor(platforms: Platform[] | undefined, setPlatforms: stateUpdater<Platform[] | undefined>) {
         this.platforms = platforms;
-        this.loading = loading;
         this.setPlatformsInternal = setPlatforms;
+    }
+
+    public updatePlatform(platform: Platform) {
+        this.setPlatformsInternal(prevState =>
+            prevState?.map(p => p.id === platform.id ? {...p, name: platform.name, shortName: platform.shortName} : p)
+                .sort(platformSortFunc)); //sort the platforms as order may have changed due to name changes
     }
 
     public setPlatforms(editor: (prevState: Platform[] | undefined) => Platform[]) {
         this.setPlatformsInternal(editor);
     }
+}
+
+function platformSortFunc(a: Platform, b: Platform): number {
+    return a.name.localeCompare(b.name);
 }
 
 export const PlatformsIndexContext = createContext<PlatformsIndexContextHandler>(undefined!);

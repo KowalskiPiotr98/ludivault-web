@@ -1,11 +1,14 @@
 import EditButton from "../common/buttons/editButton.tsx";
 import Platform from "../../models/platform.ts";
-import { useState } from "react";
-import {Button, Dialog, Field, Input, Label} from "@headlessui/react";
+import {useState} from "react";
+import {Button, Dialog, Fieldset} from "@headlessui/react";
 import ScrollableDialogBody from "../common/scrollableDialogBody.tsx";
 import DialogBackground from "../common/dialogBackground.tsx";
 import usePlatformsIndex from "../../contexts/platformsIndexContext.ts";
 import PlatformDataFields from "./platformDataFields.tsx";
+import {usePlatformEditor} from "../../hooks/platforms/usePlatformEditor.ts";
+import ErrorBar from "../common/errorBar.tsx";
+import ValidatingForm from "../common/validatingForm.tsx";
 
 class PropTypes {
     platform: Platform = undefined!;
@@ -15,14 +18,20 @@ export default function PlatformEditHandler({platform}: PropTypes) {
     const [isEditing, setIsEditing] = useState(false);
     const [editingPlatform, setEditingPlatform] = useState(platform);
     const platforms = usePlatformsIndex();
+    const {editor, editing, error} = usePlatformEditor();
 
     const reset = () => {
         setIsEditing(false);
         setEditingPlatform(platform);
     }
 
-    const submit = () => {
-        //todo
+    const submit = async () => {
+        const modified = await editor(editingPlatform);
+        if (!modified)
+            return;
+
+        platforms.updatePlatform(modified);
+        setIsEditing(false);
     }
 
     return <>
@@ -30,13 +39,16 @@ export default function PlatformEditHandler({platform}: PropTypes) {
         <Dialog onClose={reset} open={isEditing}>
             <DialogBackground/>
             <ScrollableDialogBody>
-                <div className="w-full">
-                    <PlatformDataFields platform={editingPlatform} setPlatform={setEditingPlatform} disabled={platforms.loading}/>
-                </div>
-                <div className="w-full flex justify-end">
-                    <Button className="me-2 button-cancel" disabled={platforms.loading} onClick={reset}>Cancel</Button>
-                    <Button className="button-main" disabled={platforms.loading} onClick={submit}>Save</Button>
-                </div>
+                <ValidatingForm onValidSubmit={submit}>
+                    {error && <ErrorBar message={error}/>}
+                    <Fieldset className="w-full">
+                        <PlatformDataFields platform={editingPlatform} setPlatform={setEditingPlatform} disabled={editing}/>
+                    </Fieldset>
+                    <div className="w-full mt-3 flex justify-end">
+                        <Button type="reset" className="me-2 button-cancel" disabled={editing} onClick={reset}>Cancel</Button>
+                        <Button type="submit" className="button-main" disabled={editing}>Save</Button>
+                    </div>
+                </ValidatingForm>
             </ScrollableDialogBody>
         </Dialog>
     </>
