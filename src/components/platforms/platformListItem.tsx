@@ -3,8 +3,8 @@ import WrappableText from "../common/text/wrappableText.tsx";
 import ListItem from "../common/lists/listItem.tsx";
 import ListItemBody from "../common/lists/listItemBody.tsx";
 import ListItemMenu from "../common/lists/listItemMenu.tsx";
-import DeleteButton from "../common/buttons/deleteButton.tsx";
 import PlatformEditHandler from "./platformEditHandler.tsx";
+import PlatformDeleteHandler from "./platformDeleteHandler.tsx";
 
 class PropTypes {
     item: Platform = undefined!;
@@ -17,7 +17,7 @@ export default function PlatformListItem({item}: PropTypes) {
             <WrappableText text={item.name}/>
             <ListItemMenu>
                 <PlatformEditHandler platform={item}/>
-                <DeleteButton onTrigger={() => {}} title={`Delete platform ${item.name}`}/>
+                <PlatformDeleteHandler platform={item}/>
             </ListItemMenu>
         </ListItemBody>
     </ListItem>

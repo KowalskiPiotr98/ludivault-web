@@ -18,6 +18,10 @@ export class PlatformsIndexContextHandler {
                 .sort(platformSortFunc)); //sort the platforms as order may have changed due to name changes
     }
 
+    public deletePlatform(platform: Platform) {
+        this.setPlatformsInternal(prevState => prevState?.filter(p => p.id !== platform.id));
+    }
+
     public setPlatforms(editor: (prevState: Platform[] | undefined) => Platform[]) {
         this.setPlatformsInternal(editor);
     }
