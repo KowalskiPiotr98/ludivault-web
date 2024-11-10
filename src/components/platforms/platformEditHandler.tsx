@@ -5,6 +5,7 @@ import {Button, Dialog, Field, Input, Label} from "@headlessui/react";
 import ScrollableDialogBody from "../common/scrollableDialogBody.tsx";
 import DialogBackground from "../common/dialogBackground.tsx";
 import usePlatformsIndex from "../../contexts/platformsIndexContext.ts";
+import PlatformDataFields from "./platformDataFields.tsx";
 
 class PropTypes {
     platform: Platform = undefined!;
@@ -30,14 +31,7 @@ export default function PlatformEditHandler({platform}: PropTypes) {
             <DialogBackground/>
             <ScrollableDialogBody>
                 <div className="w-full">
-                    <Field>
-                        <Label>Name</Label>
-                        <Input className="w-full input" value={editingPlatform.name} maxLength={200} required onChange={e => setEditingPlatform(prevState => ({...prevState, name: e.target.value}))}/>
-                    </Field>
-                    <Field className="mt-2">
-                        <Label>Short name</Label>
-                        <Input className="w-full input" value={editingPlatform.shortName} maxLength={5} required onChange={e => setEditingPlatform(prevState => ({...prevState, shortName: e.target.value}))}/>
-                    </Field>
+                    <PlatformDataFields platform={editingPlatform} setPlatform={setEditingPlatform} disabled={platforms.loading}/>
                 </div>
                 <div className="w-full flex justify-end">
                     <Button className="me-2 button-cancel" disabled={platforms.loading} onClick={reset}>Cancel</Button>
