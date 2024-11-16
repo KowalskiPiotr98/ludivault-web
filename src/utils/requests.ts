@@ -1,5 +1,11 @@
-export async function get(url: string) {
-    return await fetch(prependPath(url), {method: "GET"});
+export async function get(url: string, ...query: {name: string, value: string}[]) {
+    const params = new URLSearchParams();
+
+    for (const param of query) {
+        params.set(param.name, param.value);
+    }
+
+    return await fetch(prependPath(`${url}?${params.toString()}`), {method: "GET"});
 }
 
 export async function post<T>(url: string, body: T) {
