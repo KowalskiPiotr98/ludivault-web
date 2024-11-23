@@ -21,5 +21,5 @@ export default function useGame(id : string) {
         return runDebounced(act);
     }, [id]);
 
-    return {game, loading};
+    return {game, setGame, loading};
 }
