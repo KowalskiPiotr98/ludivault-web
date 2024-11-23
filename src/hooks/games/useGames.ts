@@ -3,7 +3,7 @@ import runDebounced from "../../utils/debounce.ts";
 import Game from "../../models/game.ts";
 import {getGames} from "../../requests/games.ts";
 
-export default function useGames(limit: number, offset: number) {
+export default function useGames(offset: number, limit: number) {
     const [games, setGames] = useState<Game[] | undefined>(undefined);
     const [loading, setLoading] = useState<boolean>(true);
 
