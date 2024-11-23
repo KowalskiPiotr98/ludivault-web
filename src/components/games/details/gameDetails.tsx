@@ -1,10 +1,7 @@
-import PageTitleHeader from "../../common/pageTitleHeader.tsx";
-import useGameDetailsContext from "../../../contexts/gameDetailsContext.ts";
+import GameDetailsHeader from "./gameDetailsHeader.tsx";
 
 export default function GameDetails() {
-    const game = useGameDetailsContext();
-
     return <>
-        <PageTitleHeader>{game.game.title}</PageTitleHeader>
+        <GameDetailsHeader/>
     </>
 }
