@@ -5,6 +5,7 @@ import {GamesIndexContext, GamesIndexContextHandler} from "../../contexts/gamesI
 import {PaginationContext, PaginationContextHandler} from "../../contexts/paginationContext.ts";
 import Loader from "../common/loader.tsx";
 import PageSelector from "../common/pageSelector.tsx";
+import GameCreator from "./gameCreator.tsx";
 
 export default function GamesList() {
     const [pageData, setPageData] = useState<PageData>(new PageData());
@@ -22,6 +23,7 @@ export default function GamesList() {
 
     return <>
         <GamesIndexContext.Provider value={contextHandler}>
+            <GameCreator/>
             {loading ?
                 <Loader/> :
                 <></>
