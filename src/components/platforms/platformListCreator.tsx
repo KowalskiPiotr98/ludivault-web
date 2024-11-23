@@ -25,7 +25,7 @@ export default function PlatformListCreator() {
         if (!response)
             return;
 
-        platforms.addPlatform(response);
+        platforms.addItem(response);
         setPlatform(new Platform());
         reset();
     }

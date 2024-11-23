@@ -18,7 +18,7 @@ export default function PlatformDeleteHandler({platform}: PropTypes) {
             return;
         }
 
-        platforms.deletePlatform(platform);
+        platforms.deleteItem(platform);
     }
 
     return <>

@@ -1,33 +1,25 @@
 import {createContext, useContext} from "react";
 import Platform from "../models/platform.ts";
 import {stateUpdater} from "../utils/types.ts";
+import {ItemIndexContextHandler} from "./itemIndexContext.ts";
 
-export class PlatformsIndexContextHandler {
-    public platforms: Platform[] | undefined;
-
-    setPlatformsInternal: stateUpdater<Platform[] | undefined>;
-
+export class PlatformsIndexContextHandler extends ItemIndexContextHandler<Platform> {
     constructor(platforms: Platform[] | undefined, setPlatforms: stateUpdater<Platform[] | undefined>) {
-        this.platforms = platforms;
-        this.setPlatformsInternal = setPlatforms;
+        super(platforms, setPlatforms);
     }
 
-    public updatePlatform(platform: Platform) {
-        this.setPlatformsInternal(prevState =>
-            prevState?.map(p => p.id === platform.id ? {...p, name: platform.name, shortName: platform.shortName} : p)
-                .sort(platformSortFunc)); //sort the platforms as order may have changed due to name changes
+    public override updateItem(item: Platform) {
+        super.updateItem(item);
+        this.sortPlatforms();
     }
 
-    public deletePlatform(platform: Platform) {
-        this.setPlatformsInternal(prevState => prevState?.filter(p => p.id !== platform.id));
+    public override addItem(item: Platform) {
+        super.addItem(item);
+        this.sortPlatforms();
     }
 
-    public addPlatform(platform: Platform) {
-        this.setPlatformsInternal(prevState => [...prevState ?? [], platform].sort(platformSortFunc));
-    }
-
-    public setPlatforms(editor: (prevState: Platform[] | undefined) => Platform[]) {
-        this.setPlatformsInternal(editor);
+    sortPlatforms() {
+        this.setItems(prevState => prevState?.sort(platformSortFunc) ?? []);
     }
 }
 

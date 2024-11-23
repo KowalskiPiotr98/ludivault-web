@@ -5,10 +5,10 @@ import PlatformListItem from "./platformListItem.tsx";
 export default function PlatformListItems() {
     const platforms = usePlatformsIndex();
 
-    if (!platforms.platforms)
+    if (!platforms.items)
         return <ErrorBar message={"Failed to load platforms"}/>
 
     return <>
-        {platforms.platforms.map(p => <PlatformListItem key={p.id} item={p}/>)}
+        {platforms.items.map(p => <PlatformListItem key={p.id} item={p}/>)}
     </>
 }
