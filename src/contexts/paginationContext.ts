@@ -12,15 +12,25 @@ export class PaginationContextHandler {
         this.setData = setData;
     }
 
+    public goToPrevious() {
+        if (this.data.current === 1)
+            return;
+
+        this.goToPage(this.data.current - 1);
+    }
+
+    public goToNext() {
+        if (this.data.isLast)
+            return;
+
+        this.goToPage(this.data.current + 1);
+    }
+
     public goToPage(page: number): void {
         if (page < 1)
             page = 1;
 
         this.setData(prevState => ({...prevState, current: page}));
-    }
-
-    public isLast(last: boolean) {
-        this.setData(prevState => ({...prevState, isLast: last}));
     }
 }
 
