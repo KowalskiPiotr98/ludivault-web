@@ -1,14 +1,10 @@
-import Game from "../../models/game.ts";
-import {stateUpdater} from "../../utils/types.ts";
 import PageTitleHeader from "../common/pageTitleHeader.tsx";
+import useGameDetailsContext from "../../contexts/gameDetailsContext.ts";
 
-class PropTypes {
-    game: Game = undefined!;
-    setGame: stateUpdater<Game | undefined> = undefined!;
-}
+export default function GameDetails() {
+    const game = useGameDetailsContext();
 
-export default function GameDetails({game, setGame}: PropTypes) {
     return <>
-        <PageTitleHeader>{game.title}</PageTitleHeader>
+        <PageTitleHeader>{game.game.title}</PageTitleHeader>
     </>
 }
