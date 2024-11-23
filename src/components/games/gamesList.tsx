@@ -5,6 +5,7 @@ import {GamesIndexContext, GamesIndexContextHandler} from "../../contexts/gamesI
 import {PaginationContext, PaginationContextHandler} from "../../contexts/paginationContext.ts";
 import Loader from "../common/loader.tsx";
 import PageSelector from "../common/pageSelector.tsx";
+import GameListItems from "./gameListItems.tsx";
 import GameCreator from "./gameCreator.tsx";
 
 export default function GamesList() {
@@ -26,7 +27,7 @@ export default function GamesList() {
             <GameCreator/>
             {loading ?
                 <Loader/> :
-                <></>
+                <GameListItems/>
             }
         </GamesIndexContext.Provider>
         <PaginationContext.Provider value={paginationContext}>
