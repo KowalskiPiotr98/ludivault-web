@@ -17,6 +17,9 @@ export default function GameDetailsRouter() {
         if (!game)
             return;
 
+        // this way of doing things has the downside of never actually looking at the values returned by the server
+        // this is fine for as long as the game does not set anything server-side that might be important
+        // if that starts to happen, there will need to be a separate, readonly state for this server-side game state thing
         runDebounced(() => editor(game));
     }, [game])
 
