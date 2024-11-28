@@ -5,10 +5,12 @@ import {createContext, useContext} from "react";
 export class GameDetailsContextHandler {
     public game: Game;
     public setGame: stateUpdater<Game | undefined>;
+    public loading: boolean;
 
-    constructor(game: Game, setGame: stateUpdater<Game | undefined>) {
+    constructor(game: Game, setGame: stateUpdater<Game | undefined>, loading: boolean) {
         this.game = game;
         this.setGame = setGame;
+        this.loading = loading;
     }
 }
 
