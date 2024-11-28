@@ -21,6 +21,7 @@ export default function GameDetailsRouter() {
         // this is fine for as long as the game does not set anything server-side that might be important
         // if that starts to happen, there will need to be a separate, readonly state for this server-side game state thing
         runDebounced(() => editor(game));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [game])
 
     if (loading)
