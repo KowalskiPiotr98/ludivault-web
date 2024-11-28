@@ -11,9 +11,10 @@ class PropTypes {
     disabled?: boolean | undefined;
     className?: string | undefined;
     id?: string | undefined;
+    required?: boolean | undefined;
 }
 
-export default function PlatformDropdownSelector({id = undefined, selectedId, onSelected, disabled = false, className = undefined}: PropTypes) {
+export default function PlatformDropdownSelector({id = undefined, selectedId, required = undefined, onSelected, disabled = false, className = undefined}: PropTypes) {
     const {platforms, loading} = usePlatforms();
 
     const selectedCallback = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -28,7 +29,7 @@ export default function PlatformDropdownSelector({id = undefined, selectedId, on
         return <Loader/>
     if (!platforms)
         return <ErrorBar message={"Failed to load platforms"}/>
-    return <Select id={id} className={className} disabled={disabled} value={selectedId} onChange={selectedCallback}>
+    return <Select required={required} id={id} className={className} disabled={disabled} value={selectedId} onChange={selectedCallback}>
         {platforms.map(p => <option key={p.id} value={p.id}>{p.shortName}</option>)}
     </Select>
 }
