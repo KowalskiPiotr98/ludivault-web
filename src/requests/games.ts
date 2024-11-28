@@ -6,8 +6,9 @@ export async function getGames(limit: number, offset: number): Promise<{ games: 
     if (!response.ok)
         return {games: undefined, response};
 
+    const tempGames = await response.json();
     return {
-        games: await response.json(),
+        games: tempGames.map(parseGameFromJson),
         response,
     };
 }
@@ -18,7 +19,7 @@ export async function getGame(id: string): Promise<{ game: Game | undefined, res
         return {game: undefined, response};
 
     return {
-        game: await response.json(),
+        game: await parseGameFromResponse(response),
         response,
     };
 }
@@ -29,7 +30,7 @@ export async function createGame(game: Game): Promise<{ game: Game | undefined, 
         return {game: undefined, response};
 
     return {
-        game: await response.json(),
+        game: await parseGameFromResponse(response),
         response,
     };
 }
@@ -40,7 +41,7 @@ export async function updateGame(game: Game): Promise<{ game: Game | undefined, 
         return {game: undefined, response};
 
     return {
-        game: await response.json(),
+        game: await parseGameFromResponse(response),
         response,
     };
 }
@@ -49,4 +50,13 @@ export async function deleteGame(game: Game): Promise<{ response: Response }> {
     const response = await deleteReq(`games/${game.id}`);
     return {response};
 
+}
+
+async function parseGameFromResponse(response: Response): Promise<Game> {
+    const value = await response.json();
+    return parseGameFromJson(value);
+}
+
+function parseGameFromJson(value: any): Game {
+    return {...value, releaseDate: value.releaseDate ? new Date(Date.parse(value.releaseDate)) : undefined};
 }
