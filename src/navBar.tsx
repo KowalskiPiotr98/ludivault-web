@@ -8,6 +8,7 @@ export default function NavBar() {
             </li>
             <li>
                 <Link to="/platforms">Platforms</Link>
+                <Link to="/games">Games</Link>
             </li>
         </ul>
     </nav>

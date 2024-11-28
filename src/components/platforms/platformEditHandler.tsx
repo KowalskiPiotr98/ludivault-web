@@ -30,7 +30,7 @@ export default function PlatformEditHandler({platform}: PropTypes) {
         if (!modified)
             return;
 
-        platforms.updatePlatform(modified);
+        platforms.updateItem(modified);
         setIsEditing(false);
     }
 
