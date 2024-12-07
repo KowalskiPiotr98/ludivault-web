@@ -4,7 +4,7 @@ import ListItemBody from "../common/lists/listItemBody.tsx";
 import WrappableText from "../common/text/wrappableText.tsx";
 import ListItemMenu from "../common/lists/listItemMenu.tsx";
 import EditButton from "../common/buttons/editButton.tsx";
-import {useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router";
 
 class PropTypes {
     game: Game = undefined!;
