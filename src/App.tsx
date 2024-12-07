@@ -1,6 +1,6 @@
 import './App.css';
 import NavBar from "./navBar.tsx";
-import {Outlet, Route, Routes} from "react-router-dom";
+import {Outlet, Route, Routes} from "react-router";
 import PlatformsList from "./components/platforms/platformsList.tsx";
 import GamesList from "./components/games/gamesList.tsx";
 import GameDetailsRouter from "./components/games/details/gameDetailsRouter.tsx";

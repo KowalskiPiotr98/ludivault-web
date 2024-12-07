@@ -1,4 +1,4 @@
-import {useParams} from "react-router-dom";
+import {useParams} from "react-router";
 import useGame from "../../../hooks/games/useGame.ts";
 import Loader from "../../common/loader.tsx";
 import GameDetails from "./gameDetails.tsx";
