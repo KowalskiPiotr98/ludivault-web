@@ -1,7 +1,10 @@
-export async function get(url: string, ...query: {name: string, value: string}[]) {
+export async function get(url: string, ...query: {name: string, value: string | undefined}[]) {
     const params = new URLSearchParams();
 
     for (const param of query) {
+        if (param.value === undefined)
+            continue;
+
         params.set(param.name, param.value);
     }
 
