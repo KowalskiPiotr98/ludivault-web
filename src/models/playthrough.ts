@@ -5,6 +5,10 @@ export default class Playthrough {
     public endDate: Date | undefined;
     public status: PlaythroughStatus = PlaythroughStatus.InProgress;
     public runtime: number | undefined;
+
+    constructor(gameId: string) {
+        this.gameId = gameId;
+    }
 }
 
 export enum PlaythroughStatus {
