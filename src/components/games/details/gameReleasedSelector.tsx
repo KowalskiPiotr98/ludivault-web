@@ -1,15 +1,12 @@
 import useGameDetailsContext from "../../../contexts/gameDetailsContext.ts";
-import {Button, FormGroup} from "@mui/material";
+import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
 
 export default function GameReleasedSelector() {
     const game = useGameDetailsContext();
 
     return <FormGroup>
-        <Button disabled={game.loading} onClick={() => game.setGame(prevState => ({...prevState!, released: !prevState!.released}))}>
-            {game.game.released?
-                "Released":
-                "Not released"
-            }
-        </Button>
+        <FormControlLabel control={
+            <Checkbox id={"game-released"} disabled={game.loading} checked={game.game.released} onChange={c => game.setGame(prevState => ({...prevState!, released: c.target.checked}))}/>
+        } label={"Released"}/>
     </FormGroup>
 }
