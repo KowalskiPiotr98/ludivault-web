@@ -1,9 +1,10 @@
 import GameDetailsHeader from "./gameDetailsHeader.tsx";
 import GameEditSidebar from "./gameEditSidebar.tsx";
 import GamePlaythroughListLoader from "./gamePlaythroughListLoader.tsx";
+import {Box, Container} from "@mui/material";
 
 export default function GameDetails() {
-    return <>
+    return <Container maxWidth={"lg"} sx={{pt: 3}}>
         <GameDetailsHeader/>
         <div>
             <div>
@@ -13,5 +14,5 @@ export default function GameDetails() {
                 <GameEditSidebar/>
             </div>
         </div>
-    </>
+    </Container>
 }
