@@ -1,6 +1,6 @@
 import Playthrough from "../../models/playthrough.ts";
 import {stateUpdater} from "../../utils/types.ts";
-import {Field, Fieldset, Input, Label} from "@headlessui/react";
+import {Field, Input, Label} from "@headlessui/react";
 import {getDateValueString} from "../../utils/dates.ts";
 import PlaythroughStateSelector from "./playthroughStateSelector.tsx";
 
