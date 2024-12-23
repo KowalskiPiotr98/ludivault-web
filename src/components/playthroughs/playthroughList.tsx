@@ -6,7 +6,7 @@ export default function PlaythroughList() {
     const playthroughs = usePlaythroughsContext();
 
     return <>
-        <PlaythroughCreator/>
         {playthroughs.playthroughs.map(p => <PlaythroughItem key={p.id} playthrough={p}/>)}
+        <PlaythroughCreator/>
     </>
 }
