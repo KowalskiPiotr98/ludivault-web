@@ -5,6 +5,8 @@ import PlatformsList from "./components/platforms/platformsList.tsx";
 import GamesList from "./components/games/gamesList.tsx";
 import GameDetailsRouter from "./components/games/details/gameDetailsRouter.tsx";
 import {Container} from "@mui/material";
+import {LocalizationProvider} from "@mui/x-date-pickers";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 export default function App() {
     return <Routes>
@@ -19,11 +21,13 @@ export default function App() {
 
 function Layout() {
     return <>
-        <NavBar/>
-        <main>
-            <Container maxWidth={"xl"}>
-                <Outlet/>
-            </Container>
-        </main>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <NavBar/>
+            <main>
+                <Container maxWidth={"xl"}>
+                    <Outlet/>
+                </Container>
+            </main>
+        </LocalizationProvider>
     </>
 }
