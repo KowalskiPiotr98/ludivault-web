@@ -9,7 +9,7 @@ class PropTypes {
 }
 
 export default function CreateButton({onClick, title = undefined, disabled = false}: PropTypes) {
-    return <Button type="button" title={title} onClick={onClick} disabled={disabled}>
+    return <Button variant={"outlined"} type="button" title={title} onClick={onClick} disabled={disabled}>
         <FontAwesomeIcon icon={faPlus}/>
     </Button>
 }

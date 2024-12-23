@@ -6,7 +6,7 @@ import CreateButton from "../common/buttons/createButton.tsx";
 import ValidatingForm from "../common/validatingForm.tsx";
 import ErrorBar from "../common/errorBar.tsx";
 import PlatformDataFields from "./platformDataFields.tsx";
-import {Button, Dialog, FormGroup} from "@mui/material";
+import {Box, Button, Dialog, FormGroup} from "@mui/material";
 
 export default function PlatformListCreator() {
     const platforms = usePlatformsIndex();
@@ -28,7 +28,7 @@ export default function PlatformListCreator() {
         reset();
     }
 
-    return <div>
+    return <Box>
         <CreateButton onClick={() => setShow(true)} title={"Create platform"}/>
         <Dialog onClose={reset} open={show}>
             <ValidatingForm onValidSubmit={submit}>
@@ -41,5 +41,5 @@ export default function PlatformListCreator() {
                 </div>
             </ValidatingForm>
         </Dialog>
-    </div>
+    </Box>
 }

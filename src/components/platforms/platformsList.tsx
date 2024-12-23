@@ -3,6 +3,7 @@ import {PlatformsIndexContext, PlatformsIndexContextHandler} from "../../context
 import PlatformListItems from "./platformListItems.tsx";
 import Loader from "../common/loader.tsx";
 import PlatformListCreator from "./platformListCreator.tsx";
+import ListTopButtonRow from "../common/lists/listTopButtonRow.tsx";
 
 export default function PlatformsList() {
     const {platforms, setPlatforms, loading} = usePlatforms();
@@ -10,7 +11,9 @@ export default function PlatformsList() {
     if (loading)
         return <Loader/>
     return <PlatformsIndexContext.Provider value={new PlatformsIndexContextHandler(platforms, setPlatforms)}>
-        <PlatformListCreator/>
+        <ListTopButtonRow>
+            <PlatformListCreator/>
+        </ListTopButtonRow>
         <PlatformListItems/>
     </PlatformsIndexContext.Provider>
 }
