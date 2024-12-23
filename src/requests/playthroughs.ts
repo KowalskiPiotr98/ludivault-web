@@ -59,7 +59,7 @@ export async function updatePlaythrough(playthrough: Playthrough): Promise<{ pla
 }
 
 export async function deletePlaythrough(playthrough: Playthrough): Promise<{ response: Response }> {
-    const response = await deleteReq(`games/${playthrough.id}`);
+    const response = await deleteReq(`playthroughs/${playthrough.id}`);
     return {response};
 
 }
