@@ -7,7 +7,7 @@ import ValidatingForm from "../common/validatingForm.tsx";
 import ErrorBar from "../common/errorBar.tsx";
 import {Box, FormGroup} from "@mui/material";
 import FormCreateButton from "../common/buttons/formCreateButton.tsx";
-import {DatePicker} from "@mui/x-date-pickers";
+import {DateTimePicker} from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 
 export default function PlaythroughCreator() {
@@ -22,7 +22,7 @@ export default function PlaythroughCreator() {
             return;
 
         setNewPlaythrough(new Playthrough(game.game.id));
-        playthroughs.setPlaythroughs(prevState => ([response, ...prevState]));
+        playthroughs.addNewPlaythrough(response);
     }
 
     return <Box sx={{py: 2}}>
@@ -30,7 +30,7 @@ export default function PlaythroughCreator() {
         {error && <ErrorBar message={error}/>}
         <ValidatingForm onValidSubmit={handle}>
             <FormGroup>
-                <DatePicker
+                <DateTimePicker
                     label={"Start date"}
                     value={dayjs(newPlaythrough.startDate)}
                     disableFuture

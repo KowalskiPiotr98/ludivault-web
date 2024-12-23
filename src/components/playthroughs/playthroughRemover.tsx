@@ -18,7 +18,7 @@ export default function PlaythroughRemover({playthrough}: PropTypes) {
             return;
         }
 
-        playthroughs.setPlaythroughs(prevState => prevState.filter(p => p.id !== playthrough.id));
+        playthroughs.removePlaythrough(playthrough);
     }
 
     return <DeleteButton onTrigger={handle} disabled={removing}/>

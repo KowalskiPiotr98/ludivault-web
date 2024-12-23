@@ -8,7 +8,6 @@ export default function GameDetails() {
         <GameDetailsHeader/>
         <Grid2 container spacing={2}>
             <Grid2 size={{xs: 12, sm: 8}}>
-                <h4>Playthroughs</h4>
                 <GamePlaythroughListLoader/>
             </Grid2>
 
