@@ -16,9 +16,9 @@ export default function GameListItem({game}: PropTypes) {
     return <ListItem>
         <ListItemBody>
             <WrappableText text={game.title}/>
-            <ListItemMenu>
-                <EditButton onClick={() => navigate(`/games/${game.id}`)}/>
-            </ListItemMenu>
         </ListItemBody>
+        <ListItemMenu>
+            <EditButton onClick={() => navigate(`/games/${game.id}`)}/>
+        </ListItemMenu>
     </ListItem>
 }

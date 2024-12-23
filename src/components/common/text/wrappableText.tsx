@@ -1,8 +1,9 @@
+import {Box} from "@mui/material";
+
 class PropTypes {
     text: string = undefined!;
 }
 
 export default function WrappableText({text}: PropTypes) {
-    //todo: who knows
-    return <span>{text}</span>
+    return <Box sx={{textWrap: "wrap", wordWrap: "break-word", display: "inline"}}>{text}</Box>
 }
