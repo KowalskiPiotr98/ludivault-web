@@ -6,7 +6,8 @@ import PlatformDataFields from "./platformDataFields.tsx";
 import {usePlatformEditor} from "../../hooks/platforms/usePlatformEditor.ts";
 import ErrorBar from "../common/errorBar.tsx";
 import ValidatingForm from "../common/validatingForm.tsx";
-import {Button, Dialog, FormGroup} from "@mui/material";
+import {Dialog, DialogActions, DialogContent, DialogTitle, FormGroup} from "@mui/material";
+import FormSaveButton from "../common/buttons/formSaveButton.tsx";
 
 class PropTypes {
     platform: Platform = undefined!;
@@ -34,16 +35,20 @@ export default function PlatformEditHandler({platform}: PropTypes) {
 
     return <>
         <EditButton onClick={() => setIsEditing(true)} title={`Edit platform ${platform.name}`}/>
-        <Dialog onClose={reset} open={isEditing}>
+        <Dialog onClose={reset} open={isEditing} fullWidth>
             <ValidatingForm onValidSubmit={submit}>
-                {error && <ErrorBar message={error}/>}
-                <FormGroup>
-                    <PlatformDataFields platform={editingPlatform} setPlatform={setEditingPlatform} disabled={editing}/>
-                </FormGroup>
-                <div>
-                    <Button type="reset" disabled={editing} onClick={reset}>Cancel</Button>
-                    <Button type="submit" disabled={editing}>Save</Button>
-                </div>
+                <DialogTitle>
+                    Edit platform
+                </DialogTitle>
+                <DialogContent>
+                    {error && <ErrorBar message={error}/>}
+                    <FormGroup>
+                        <PlatformDataFields platform={editingPlatform} setPlatform={setEditingPlatform} disabled={editing}/>
+                    </FormGroup>
+                </DialogContent>
+                <DialogActions>
+                    <FormSaveButton/>
+                </DialogActions>
             </ValidatingForm>
         </Dialog>
     </>
