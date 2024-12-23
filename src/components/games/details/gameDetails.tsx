@@ -1,7 +1,7 @@
 import GameDetailsHeader from "./gameDetailsHeader.tsx";
 import GameEditSidebar from "./gameEditSidebar.tsx";
 import GamePlaythroughListLoader from "./gamePlaythroughListLoader.tsx";
-import {Box, Container} from "@mui/material";
+import {Container} from "@mui/material";
 
 export default function GameDetails() {
     return <Container maxWidth={"lg"} sx={{pt: 3}}>
