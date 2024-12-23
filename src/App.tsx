@@ -7,6 +7,7 @@ import GameDetailsRouter from "./components/games/details/gameDetailsRouter.tsx"
 import {Container} from "@mui/material";
 import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import "dayjs/locale/en-gb.js";
 
 export default function App() {
     return <Routes>
@@ -21,7 +22,7 @@ export default function App() {
 
 function Layout() {
     return <>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={'en-gb'}>
             <NavBar/>
             <main>
                 <Container maxWidth={"xl"}>
