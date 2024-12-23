@@ -1,4 +1,5 @@
+import {CircularProgress} from "@mui/material";
+
 export default function Loader() {
-    //todo: this is very clearly temporary
-    return <>Loading...</>
+    return <CircularProgress sx={{width: "100%", height: "100%", p: 2, m: "auto"}}/>
 }
