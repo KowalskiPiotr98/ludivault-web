@@ -6,7 +6,8 @@ import CreateButton from "../common/buttons/createButton.tsx";
 import ValidatingForm from "../common/validatingForm.tsx";
 import ErrorBar from "../common/errorBar.tsx";
 import GameDataFields from "./gameDataFields.tsx";
-import {Box, Button, Dialog, FormGroup} from "@mui/material";
+import {Box, Dialog, DialogActions, DialogContent, DialogTitle, FormGroup} from "@mui/material";
+import FormCreateButton from "../common/buttons/formCreateButton.tsx";
 
 export default function GameCreator() {
     const games = useGamesIndex();
@@ -30,15 +31,20 @@ export default function GameCreator() {
 
     return <Box>
         <CreateButton onClick={() => setShow(true)} title={"Create game"}/>
-        <Dialog onClose={reset} open={show}>
+        <Dialog onClose={reset} open={show} fullWidth>
             <ValidatingForm onValidSubmit={submit}>
-                {error && <ErrorBar message={error}/>}
-                <FormGroup>
-                    <GameDataFields game={game} setGame={setGame} disabled={creating}/>
-                </FormGroup>
-                <div>
-                    <Button type="submit" disabled={creating}>Create</Button>
-                </div>
+                <DialogTitle>
+                    Create game
+                </DialogTitle>
+                <DialogContent>
+                    {error && <ErrorBar message={error}/>}
+                    <FormGroup>
+                        <GameDataFields game={game} setGame={setGame} disabled={creating}/>
+                    </FormGroup>
+                </DialogContent>
+                <DialogActions>
+                    <FormCreateButton/>
+                </DialogActions>
             </ValidatingForm>
         </Dialog>
     </Box>
