@@ -3,5 +3,6 @@ class PropTypes {
 }
 
 export default function WrappableText({text}: PropTypes) {
-    return <span className="text-wrap">{text}</span>
+    //todo: who knows
+    return <span>{text}</span>
 }

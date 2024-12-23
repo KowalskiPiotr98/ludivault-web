@@ -5,7 +5,7 @@ class PropTypes {
 }
 
 export default function ListItem({children}: PropTypes) {
-    return <div className="w-full border">
+    return <div>
         {children}
     </div>
 }

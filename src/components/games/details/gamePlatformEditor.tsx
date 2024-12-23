@@ -1,18 +1,17 @@
-import {Fieldset, Label} from "@headlessui/react";
 import PlatformDropdownSelector from "../../platforms/platformDropdownSelector.tsx";
 import useGameDetailsContext from "../../../contexts/gameDetailsContext.ts";
+import {FormGroup, FormLabel} from "@mui/material";
 
 export default function GamePlatformEditor() {
     const game = useGameDetailsContext();
 
-    return <Fieldset>
-        <Label htmlFor={"platform"}>Platform</Label>
+    return <FormGroup>
+        <FormLabel htmlFor={"platform"}>Platform</FormLabel>
         <PlatformDropdownSelector
-            className={"w-full"}
             required
             disabled={game.loading}
             selectedId={game.game.platformId}
             onSelected={e => game.setGame(prevState => ({...prevState!, platformId: e!.id}))}
         />
-    </Fieldset>
+    </FormGroup>
 }

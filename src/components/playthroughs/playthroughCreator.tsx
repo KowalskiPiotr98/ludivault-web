@@ -5,8 +5,8 @@ import PlaythroughFields from "./playthroughFields.tsx";
 import useGameDetailsContext from "../../contexts/gameDetailsContext.ts";
 import {usePlaythroughCreator} from "../../hooks/playthroughs/usePlaythroughCreator.ts";
 import ValidatingForm from "../common/validatingForm.tsx";
-import {Button, Fieldset} from "@headlessui/react";
 import ErrorBar from "../common/errorBar.tsx";
+import {Button, FormGroup} from "@mui/material";
 
 export default function PlaythroughCreator() {
     const playthroughs = usePlaythroughsContext();
@@ -23,13 +23,13 @@ export default function PlaythroughCreator() {
         playthroughs.setPlaythroughs(prevState => ([newPlaythrough, ...prevState]));
     }
 
-    return <div className="flex">
+    return <div>
         {error && <ErrorBar message={error}/>}
         <ValidatingForm onValidSubmit={handle}>
-            <Fieldset className={'flex'}>
+            <FormGroup>
                 <PlaythroughFields playthrough={newPlaythrough} setPlaythrough={setNewPlaythrough}/>
-                <Button className={'button-main'} type={'submit'} disabled={creating}>Save</Button>
-            </Fieldset>
+                <Button type={'submit'} disabled={creating}>Save</Button>
+            </FormGroup>
         </ValidatingForm>
     </div>
 }

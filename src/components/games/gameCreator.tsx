@@ -3,12 +3,10 @@ import {useGameCreator} from "../../hooks/games/useGameCreator.ts";
 import {useState} from "react";
 import Game from "../../models/game.ts";
 import CreateButton from "../common/buttons/createButton.tsx";
-import {Button, Dialog, Fieldset} from "@headlessui/react";
-import DialogBackground from "../common/dialogBackground.tsx";
-import ScrollableDialogBody from "../common/scrollableDialogBody.tsx";
 import ValidatingForm from "../common/validatingForm.tsx";
 import ErrorBar from "../common/errorBar.tsx";
 import GameDataFields from "./gameDataFields.tsx";
+import {Button, Dialog, FormGroup} from "@mui/material";
 
 export default function GameCreator() {
     const games = useGamesIndex();
@@ -33,18 +31,15 @@ export default function GameCreator() {
     return <div>
         <CreateButton onClick={() => setShow(true)} title={"Create game"}/>
         <Dialog onClose={reset} open={show}>
-            <DialogBackground/>
-            <ScrollableDialogBody>
-                <ValidatingForm onValidSubmit={submit}>
-                    {error && <ErrorBar message={error}/>}
-                    <Fieldset className={"w-full"}>
-                        <GameDataFields game={game} setGame={setGame} disabled={creating}/>
-                    </Fieldset>
-                    <div className="w-full mt-3 flex justify-end">
-                        <Button type="submit" className="button-main" disabled={creating}>Create</Button>
-                    </div>
-                </ValidatingForm>
-            </ScrollableDialogBody>
+            <ValidatingForm onValidSubmit={submit}>
+                {error && <ErrorBar message={error}/>}
+                <FormGroup>
+                    <GameDataFields game={game} setGame={setGame} disabled={creating}/>
+                </FormGroup>
+                <div>
+                    <Button type="submit" disabled={creating}>Create</Button>
+                </div>
+            </ValidatingForm>
         </Dialog>
     </div>
 }

@@ -1,4 +1,3 @@
-import PageTitleHeader from "../../common/pageTitleHeader.tsx";
 import EditButton from "../../common/buttons/editButton.tsx";
 import GameTitleInlineEdit from "./gameTitleInlineEdit.tsx";
 import {useState} from "react";
@@ -10,16 +9,14 @@ export default function GameDetailsHeader() {
     const [edit, setEdit] = useState(false);
 
     return <>
-        <PageTitleHeader>
-            <div className={"grid grid-cols-10"}>
-                <div className={"col-span-9"}>
-                    <WrappableText text={game.game.title}/>
-                </div>
-                <div className={"content-center"}>
-                    <EditButton onClick={() => setEdit(prevState => !prevState)}/>
-                </div>
+        <div>
+            <div>
+                <WrappableText text={game.game.title}/>
             </div>
-            {edit && <GameTitleInlineEdit/>}
-        </PageTitleHeader>
+            <div>
+                <EditButton onClick={() => setEdit(prevState => !prevState)}/>
+            </div>
+        </div>
+        {edit && <GameTitleInlineEdit/>}
     </>
 }

@@ -13,7 +13,7 @@ class PropTypes {
 export default function PlatformListItem({item}: PropTypes) {
     return <ListItem>
         <ListItemBody>
-            <span className="me-1 text-right min-w-24">({item.shortName})</span>
+            <span>({item.shortName})</span>
             <WrappableText text={item.name}/>
             <ListItemMenu>
                 <PlatformEditHandler platform={item}/>

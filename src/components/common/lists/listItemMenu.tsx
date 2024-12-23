@@ -5,7 +5,7 @@ class PropTypes {
 }
 
 export default function ListItemMenu({children}: PropTypes) {
-    return <span className="flex justify-end w-full">
+    return <span>
         {children}
     </span>
 }

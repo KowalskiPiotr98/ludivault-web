@@ -1,10 +1,10 @@
+import { Button } from "@mui/material";
 import usePaginationContext from "../../contexts/paginationContext.ts";
-import {Button} from "@headlessui/react";
 
 export default function PageSelector() {
     const pagination = usePaginationContext();
 
-    //todo: needs styling, placeholder for now
+    //todo: needs styling (and usage of default mui elements), placeholder for now
     return <div>
         {pagination.data.current > 1 && <Button onClick={() => pagination.goToPrevious()}>Prev</Button>}
         {pagination.data.current}
