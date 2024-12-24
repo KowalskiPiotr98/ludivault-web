@@ -4,6 +4,7 @@ import ListItem from "../common/lists/listItem.tsx";
 import ListItemBody from "../common/lists/listItemBody.tsx";
 import ListItemMenu from "../common/lists/listItemMenu.tsx";
 import PlaythroughTimeAdder from "./playthroughTimeAdder.tsx";
+import PlaythroughEditor from "./playthroughEditor.tsx";
 
 class PropTypes {
     playthrough: Playthrough = undefined!;
@@ -17,6 +18,7 @@ export default function PlaythroughItem({playthrough}: PropTypes) {
         </ListItemBody>
         <ListItemMenu>
             <PlaythroughTimeAdder playthrough={playthrough}/>
+            <PlaythroughEditor playthrough={playthrough}/>
             <PlaythroughRemover playthrough={playthrough}/>
         </ListItemMenu>
     </ListItem>

@@ -1,5 +1,5 @@
 import {PlaythroughStatus} from "../../models/playthrough.ts";
-import {Select} from "@mui/material";
+import {MenuItem, Select} from "@mui/material";
 
 class PropTypes {
     status: PlaythroughStatus = undefined!;
@@ -11,10 +11,10 @@ class PropTypes {
 
 export default function PlaythroughStateSelector({status, setStatus, name, required, id}: PropTypes) {
     return <Select id={id} name={name} required={required} value={status} onChange={e => setStatus(+e.target.value)}>
-        <option value={'0'}>In progress</option>
-        <option value={'1'}>Completed</option>
-        <option value={'2'}>Dropped</option>
-        <option value={'3'}>Retired</option>
-        <option value={'4'}>Suspended</option>
+        <MenuItem value={'0'}>In progress</MenuItem>
+        <MenuItem value={'1'}>Completed</MenuItem>
+        <MenuItem value={'2'}>Dropped</MenuItem>
+        <MenuItem value={'3'}>Retired</MenuItem>
+        <MenuItem value={'4'}>Suspended</MenuItem>
     </Select>
 }
