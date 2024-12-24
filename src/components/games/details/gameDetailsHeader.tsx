@@ -1,9 +1,9 @@
 import GameTitleInlineEdit from "./gameTitleInlineEdit.tsx";
 import InlineStack from "../../common/inlineStack.tsx";
-import {Box} from "@mui/material";
+import {Box, Paper} from "@mui/material";
 
 export default function GameDetailsHeader() {
-    return <>
+    return <Paper sx={{px: 2}}>
         <InlineStack>
             <Box sx={{width: "100%"}}>
                 <h2>
@@ -11,5 +11,5 @@ export default function GameDetailsHeader() {
                 </h2>
             </Box>
         </InlineStack>
-    </>
+    </Paper>
 }
