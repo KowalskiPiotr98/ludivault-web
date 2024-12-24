@@ -15,8 +15,10 @@ export default function PlaythroughList() {
         PlaythroughStatus.Suspended,
     ]
 
+    const lengthTotal = playthroughs.playthroughs.map(p => p.runtime ?? 0).reduce((a, b) => a + b, 0);
+
     return <Box>
-        <h4>Playthroughs ({playthroughs.playthroughs.length})</h4>
+        <h4>Playthroughs (total: {playthroughs.playthroughs.length}, time: {lengthTotal} minutes)</h4>
         {stateOrder.map(s => <Box key={s}>
             <h5>{getPlaythroughStatusName(s)}</h5>
             <ListItems>

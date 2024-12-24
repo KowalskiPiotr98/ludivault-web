@@ -10,7 +10,6 @@ class PropTypes {
 }
 
 export default function PlaythroughItem({playthrough}: PropTypes) {
-    //todo: there should be a button to just add a number of minutes to current playtime
     return <ListItem>
         <ListItemBody>
             {playthrough.startDate.toLocaleString()}-{playthrough.endDate?.toLocaleString() ?? 'INCOMPLETE'}
