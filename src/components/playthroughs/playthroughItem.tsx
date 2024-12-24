@@ -3,6 +3,7 @@ import PlaythroughRemover from "./playthroughRemover.tsx";
 import ListItem from "../common/lists/listItem.tsx";
 import ListItemBody from "../common/lists/listItemBody.tsx";
 import ListItemMenu from "../common/lists/listItemMenu.tsx";
+import PlaythroughTimeAdder from "./playthroughTimeAdder.tsx";
 
 class PropTypes {
     playthrough: Playthrough = undefined!;
@@ -16,6 +17,7 @@ export default function PlaythroughItem({playthrough}: PropTypes) {
             <span> ({playthrough.runtime ?? '0'} min)</span>
         </ListItemBody>
         <ListItemMenu>
+            <PlaythroughTimeAdder playthrough={playthrough}/>
             <PlaythroughRemover playthrough={playthrough}/>
         </ListItemMenu>
     </ListItem>

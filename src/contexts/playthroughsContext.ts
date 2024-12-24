@@ -16,6 +16,10 @@ export class PlaythroughsContextHandler {
         this.setPlaythroughsInternal(prevState => [...prevState, playthrough].sort(playthroughSorter));
     }
 
+    public updatePlaythrough(playthrough: Playthrough) {
+        this.setPlaythroughsInternal(prevState => prevState.map(p => p.id === playthrough.id ? playthrough : p));
+    }
+
     public removePlaythrough(playthrough: Playthrough) {
         this.setPlaythroughsInternal(prevState => prevState.filter(p => p.id !== playthrough.id));
     }
