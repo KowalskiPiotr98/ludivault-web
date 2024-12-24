@@ -1,14 +1,13 @@
 import usePlatformsIndex from "../../contexts/platformsIndexContext.ts";
 import {usePlatformCreator} from "../../hooks/platforms/usePlatformCreator.ts";
-import {Button, Dialog, Fieldset} from "@headlessui/react";
 import {useState} from "react";
 import Platform from "../../models/platform.ts";
 import CreateButton from "../common/buttons/createButton.tsx";
-import DialogBackground from "../common/dialogBackground.tsx";
-import ScrollableDialogBody from "../common/scrollableDialogBody.tsx";
 import ValidatingForm from "../common/validatingForm.tsx";
 import ErrorBar from "../common/errorBar.tsx";
 import PlatformDataFields from "./platformDataFields.tsx";
+import {Box, Dialog, DialogActions, DialogContent, DialogTitle, FormGroup} from "@mui/material";
+import FormCreateButton from "../common/buttons/formCreateButton.tsx";
 
 export default function PlatformListCreator() {
     const platforms = usePlatformsIndex();
@@ -30,21 +29,23 @@ export default function PlatformListCreator() {
         reset();
     }
 
-    return <div>
+    return <Box>
         <CreateButton onClick={() => setShow(true)} title={"Create platform"}/>
-        <Dialog  onClose={reset} open={show}>
-            <DialogBackground/>
-            <ScrollableDialogBody>
-                <ValidatingForm onValidSubmit={submit}>
+        <Dialog onClose={reset} open={show} fullWidth>
+            <ValidatingForm onValidSubmit={submit}>
+                <DialogTitle>
+                    Create platform
+                </DialogTitle>
+                <DialogContent>
                     {error && <ErrorBar message={error}/>}
-                    <Fieldset className="w-full">
+                    <FormGroup sx={{width: "100%"}}>
                         <PlatformDataFields platform={platform} setPlatform={setPlatform} disabled={creating}/>
-                    </Fieldset>
-                    <div className="w-full mt-3 flex justify-end">
-                        <Button type="submit" className="button-main" disabled={creating}>Create</Button>
-                    </div>
-                </ValidatingForm>
-            </ScrollableDialogBody>
+                    </FormGroup>
+                </DialogContent>
+                <DialogActions>
+                    <FormCreateButton/>
+                </DialogActions>
+            </ValidatingForm>
         </Dialog>
-    </div>
+    </Box>
 }

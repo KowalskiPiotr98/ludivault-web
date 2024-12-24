@@ -1,11 +1,12 @@
 import {ReactNode} from "react";
+import {Box} from "@mui/material";
 
 class PropTypes {
     children: ReactNode | ReactNode[] = undefined!;
 }
 
 export default function ListItemMenu({children}: PropTypes) {
-    return <span className="flex justify-end w-full">
+    return <Box>
         {children}
-    </span>
+    </Box>
 }

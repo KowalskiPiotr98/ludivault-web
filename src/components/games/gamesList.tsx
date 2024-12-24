@@ -7,6 +7,7 @@ import Loader from "../common/loader.tsx";
 import PageSelector from "../common/pageSelector.tsx";
 import GameListItems from "./gameListItems.tsx";
 import GameCreator from "./gameCreator.tsx";
+import ListTopButtonRow from "../common/lists/listTopButtonRow.tsx";
 
 export default function GamesList() {
     const [pageData, setPageData] = useState<PageData>(new PageData());
@@ -24,7 +25,9 @@ export default function GamesList() {
 
     return <>
         <GamesIndexContext.Provider value={contextHandler}>
-            <GameCreator/>
+            <ListTopButtonRow>
+                <GameCreator/>
+            </ListTopButtonRow>
             {loading ?
                 <Loader/> :
                 <GameListItems/>

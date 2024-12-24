@@ -1,10 +1,10 @@
 import Game from "../../models/game.ts";
 import {stateUpdater} from "../../utils/types.ts";
-import {Field, Input, Label} from "@headlessui/react";
 import PlatformDropdownSelector from "../platforms/platformDropdownSelector.tsx";
-import StyledCheckbox from "../common/styledCheckbox.tsx";
-import {getDateValueString} from "../../utils/dates.ts";
 import {useEffect} from "react";
+import {Checkbox, FormControlLabel, FormGroup, TextField} from "@mui/material";
+import {DatePicker} from "@mui/x-date-pickers";
+import dayjs from "dayjs";
 
 class PropTypes {
     game: Game = undefined!;
@@ -12,7 +12,7 @@ class PropTypes {
     disabled?: boolean | undefined;
 }
 
-export default function GameDataFields({game, setGame, disabled = false}: PropTypes) {
+export default function GameDataFormGroups({game, setGame, disabled = false}: PropTypes) {
     useEffect(() => {
         if (game.releaseDate === undefined)
             return;
@@ -22,25 +22,24 @@ export default function GameDataFields({game, setGame, disabled = false}: PropTy
     }, [game.releaseDate])
 
     return <>
-        <Field>
-            <Label htmlFor={"game-title"}>Title</Label>
-            <Input id={"game-title"} type={"text"} className={"w-full input"} value={game.title} maxLength={500} disabled={disabled} required onChange={e => setGame(prevState => ({...prevState, title:e.target.value }))}/>
-        </Field>
-        <Field className={"mt-2"}>
-            <Label htmlFor={"game-platform"}>Platform</Label>
-            <PlatformDropdownSelector id={"game-platform"} className={"w-full input"} selectedId={game.platformId} onSelected={p => setGame(prevState => ({...prevState, platformId: p?.id ?? ''}))}/>
-        </Field>
-        <Field className={"mt-2"}>
-            <Label htmlFor={"game-owned"}>Owned</Label>
-            <StyledCheckbox id={"game-owned"} disabled={disabled} checked={game.owned} onChange={c => setGame(prevState => ({...prevState, owned: c}))}/>
-        </Field>
-        <Field className={"mt-2"}>
-            <Label htmlFor={"game-release-date"}>Release date</Label>
-            <Input type={"date"} id={"game-release-date"} className={"w-full input"} value={getDateValueString(game.releaseDate)} onChange={e => setGame(prevState => ({...prevState, releaseDate: new Date(Date.parse(e.target.value))}))}/>
-        </Field>
-        <Field className={"mt-2"}>
-            <Label htmlFor={"game-released"}>Released</Label>
-            <StyledCheckbox id={"game-released"} disabled={disabled} checked={game.released} onChange={c => setGame(prevState => ({...prevState, released: c}))}/>
-        </Field>
+        <FormGroup sx={{p: 1}}>
+            <TextField label={"Title"} placeholder={"Title of the game"} id={"game-title"} type={"text"} value={game.title} slotProps={{htmlInput: {maxLength: 500}}} disabled={disabled} required onChange={e => setGame(prevState => ({...prevState, title:e.target.value }))}/>
+        </FormGroup>
+        <FormGroup sx={{p: 1}}>
+            <PlatformDropdownSelector required id={"game-platform"} selectedId={game.platformId} onSelected={p => setGame(prevState => ({...prevState, platformId: p?.id ?? ''}))}/>
+        </FormGroup>
+        <FormGroup sx={{p: 1}}>
+            <FormControlLabel control={
+                <Checkbox id={"game-owned"} disabled={disabled} checked={game.owned} onChange={c => setGame(prevState => ({...prevState, owned: c.target.checked}))}/>
+            } label={"Owned"}/>
+        </FormGroup>
+        <FormGroup sx={{p: 1}}>
+            <DatePicker label={"Release date"} value={game.releaseDate ? dayjs(game.releaseDate) : undefined} onChange={e => setGame(prevState => ({...prevState, releaseDate: e?.toDate()}))}/>
+        </FormGroup>
+        <FormGroup sx={{p: 1}}>
+            <FormControlLabel control={
+                <Checkbox id={"game-released"} disabled={disabled} checked={game.released} onChange={c => setGame(prevState => ({...prevState, released: c.target.checked}))}/>
+            } label={"Released"}/>
+        </FormGroup>
     </>
 }

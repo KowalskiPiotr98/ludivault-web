@@ -1,17 +1,20 @@
 import GameDetailsHeader from "./gameDetailsHeader.tsx";
 import GameEditSidebar from "./gameEditSidebar.tsx";
 import GamePlaythroughListLoader from "./gamePlaythroughListLoader.tsx";
+import {Container, Grid2} from "@mui/material";
 
 export default function GameDetails() {
-    return <>
+    return <Container maxWidth={"lg"} sx={{pt: 3}}>
         <GameDetailsHeader/>
-        <div className="grid grid-cols-4">
-            <div className="col-span-3">
+        <Grid2 container spacing={2}>
+            <Grid2 size={{xs: 12, sm: 8}}>
                 <GamePlaythroughListLoader/>
-            </div>
-            <div className="border col-span-1">
+            </Grid2>
+
+            <Grid2 size={{xs: 12, sm: "grow"}}>
+                <h4>Settings</h4>
                 <GameEditSidebar/>
-            </div>
-        </div>
-    </>
+            </Grid2>
+        </Grid2>
+    </Container>
 }

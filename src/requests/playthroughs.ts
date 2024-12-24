@@ -1,5 +1,5 @@
 import {deleteReq, get, post, put} from "../utils/requests.ts";
-import Playthrough from "../models/playthrough.ts";
+import Playthrough, {playthroughSorter} from "../models/playthrough.ts";
 
 export async function getPlaythroughs(gameId: string | undefined): Promise<{ playthroughs: Playthrough[] | undefined, response: Response }> {
     const response = await get(`playthroughs`, {name: "gameId", value: gameId});
@@ -8,7 +8,7 @@ export async function getPlaythroughs(gameId: string | undefined): Promise<{ pla
 
     const tempPlaythroughs = await response.json();
     return {
-        playthroughs: tempPlaythroughs.map(parsePlaythroughFromJson),
+        playthroughs: tempPlaythroughs.map(parsePlaythroughFromJson).sort(playthroughSorter),
         response,
     };
 }
@@ -18,9 +18,9 @@ export async function getPlaythroughsForGame(gameId: string): Promise<{ playthro
     if (!response.ok)
         return {playthroughs: undefined, response};
 
-    const tempPlaythroughs = await response.json();
+    const tempPlaythroughs: Playthrough[] = await response.json();
     return {
-        playthroughs: tempPlaythroughs.map(parsePlaythroughFromJson),
+        playthroughs: tempPlaythroughs.map(parsePlaythroughFromJson).sort(playthroughSorter),
         response,
     };
 }

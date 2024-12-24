@@ -1,14 +1,13 @@
 import EditButton from "../common/buttons/editButton.tsx";
 import Platform from "../../models/platform.ts";
 import {useState} from "react";
-import {Button, Dialog, Fieldset} from "@headlessui/react";
-import ScrollableDialogBody from "../common/scrollableDialogBody.tsx";
-import DialogBackground from "../common/dialogBackground.tsx";
 import usePlatformsIndex from "../../contexts/platformsIndexContext.ts";
 import PlatformDataFields from "./platformDataFields.tsx";
 import {usePlatformEditor} from "../../hooks/platforms/usePlatformEditor.ts";
 import ErrorBar from "../common/errorBar.tsx";
 import ValidatingForm from "../common/validatingForm.tsx";
+import {Dialog, DialogActions, DialogContent, DialogTitle, FormGroup} from "@mui/material";
+import FormSaveButton from "../common/buttons/formSaveButton.tsx";
 
 class PropTypes {
     platform: Platform = undefined!;
@@ -36,20 +35,21 @@ export default function PlatformEditHandler({platform}: PropTypes) {
 
     return <>
         <EditButton onClick={() => setIsEditing(true)} title={`Edit platform ${platform.name}`}/>
-        <Dialog onClose={reset} open={isEditing}>
-            <DialogBackground/>
-            <ScrollableDialogBody>
-                <ValidatingForm onValidSubmit={submit}>
+        <Dialog onClose={reset} open={isEditing} fullWidth>
+            <ValidatingForm onValidSubmit={submit}>
+                <DialogTitle>
+                    Edit platform
+                </DialogTitle>
+                <DialogContent>
                     {error && <ErrorBar message={error}/>}
-                    <Fieldset className="w-full">
+                    <FormGroup>
                         <PlatformDataFields platform={editingPlatform} setPlatform={setEditingPlatform} disabled={editing}/>
-                    </Fieldset>
-                    <div className="w-full mt-3 flex justify-end">
-                        <Button type="reset" className="me-2 button-cancel" disabled={editing} onClick={reset}>Cancel</Button>
-                        <Button type="submit" className="button-main" disabled={editing}>Save</Button>
-                    </div>
-                </ValidatingForm>
-            </ScrollableDialogBody>
+                    </FormGroup>
+                </DialogContent>
+                <DialogActions>
+                    <FormSaveButton/>
+                </DialogActions>
+            </ValidatingForm>
         </Dialog>
     </>
 }

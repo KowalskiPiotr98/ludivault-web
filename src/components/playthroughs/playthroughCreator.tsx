@@ -1,12 +1,14 @@
 import Playthrough from "../../models/playthrough.ts";
 import usePlaythroughsContext from "../../contexts/playthroughsContext.ts";
 import {useState} from "react";
-import PlaythroughFields from "./playthroughFields.tsx";
 import useGameDetailsContext from "../../contexts/gameDetailsContext.ts";
 import {usePlaythroughCreator} from "../../hooks/playthroughs/usePlaythroughCreator.ts";
 import ValidatingForm from "../common/validatingForm.tsx";
-import {Button, Fieldset} from "@headlessui/react";
 import ErrorBar from "../common/errorBar.tsx";
+import {Box, FormGroup} from "@mui/material";
+import FormCreateButton from "../common/buttons/formCreateButton.tsx";
+import {DateTimePicker} from "@mui/x-date-pickers";
+import dayjs from "dayjs";
 
 export default function PlaythroughCreator() {
     const playthroughs = usePlaythroughsContext();
@@ -20,16 +22,23 @@ export default function PlaythroughCreator() {
             return;
 
         setNewPlaythrough(new Playthrough(game.game.id));
-        playthroughs.setPlaythroughs(prevState => ([newPlaythrough, ...prevState]));
+        playthroughs.addNewPlaythrough(response);
     }
 
-    return <div className="flex">
+    return <Box sx={{py: 2}}>
+        <h5>New playthrough</h5>
         {error && <ErrorBar message={error}/>}
         <ValidatingForm onValidSubmit={handle}>
-            <Fieldset className={'flex'}>
-                <PlaythroughFields playthrough={newPlaythrough} setPlaythrough={setNewPlaythrough}/>
-                <Button className={'button-main'} type={'submit'} disabled={creating}>Save</Button>
-            </Fieldset>
+            <FormGroup>
+                <DateTimePicker
+                    label={"Start date"}
+                    value={dayjs(newPlaythrough.startDate)}
+                    disableFuture
+                    disabled={creating}
+                    onChange={e => setNewPlaythrough(prevState => ({...prevState, startDate: e?.toDate() ?? prevState.startDate}))}
+                    />
+            </FormGroup>
+            <FormCreateButton/>
         </ValidatingForm>
-    </div>
+    </Box>
 }
