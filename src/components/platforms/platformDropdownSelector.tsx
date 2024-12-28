@@ -7,9 +7,9 @@ import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui
 class PropTypes {
     selectedId: string | undefined;
     onSelected: (selected: Platform | undefined) => void = undefined!;
-    disabled?: boolean | undefined;
-    id?: string | undefined;
-    required?: boolean | undefined;
+    disabled?: boolean;
+    id?: string;
+    required?: boolean;
 }
 
 export default function PlatformDropdownSelector({id = undefined, selectedId, required = undefined, onSelected, disabled = false}: Readonly<PropTypes>) {

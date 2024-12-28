@@ -28,7 +28,7 @@ export function usePlatformEditor() {
                 return undefined;
             }
 
-            throw "Unexpected response code received when updating a platform";
+            throw new Error("Unexpected response code received when updating a platform");
         } finally {
             setEditing(false);
         }

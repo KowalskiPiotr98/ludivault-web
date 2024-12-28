@@ -24,7 +24,7 @@ export function usePlatformCreator() {
                 return undefined;
             }
 
-            throw "Unexpected response code received when creating platform";
+            throw new Error("Unexpected response code received when creating platform");
         } finally {
             setCreating(false);
         }

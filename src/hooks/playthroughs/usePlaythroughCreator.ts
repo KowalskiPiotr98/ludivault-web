@@ -20,7 +20,7 @@ export function usePlaythroughCreator() {
                 return undefined;
             }
 
-            throw "Unexpected response code received when creating playthrough";
+            throw new Error("Unexpected response code received when creating playthrough");
         } finally {
             setCreating(false);
         }

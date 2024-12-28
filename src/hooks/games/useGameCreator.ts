@@ -20,7 +20,7 @@ export function useGameCreator() {
                 return undefined;
             }
 
-            throw "Unexpected response code received when creating game";
+            throw new Error("Unexpected response code received when creating game");
         } finally {
             setCreating(false);
         }
