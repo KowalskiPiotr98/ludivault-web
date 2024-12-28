@@ -11,9 +11,7 @@ export default function GameEditSidebar() {
         <GameReleaseDateSelector key={3}/>
     ]
 
-    return <>
-        <div>
-            {items.map((item, index) => <div key={index}>{item}</div>)}
-        </div>
-    </>
+    return <div>
+        {items.map((item, index) => <div key={index}>{item}</div>)}
+    </div>
 }
