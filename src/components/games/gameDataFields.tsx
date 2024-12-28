@@ -9,7 +9,7 @@ import dayjs from "dayjs";
 class PropTypes {
     game: Game = undefined!;
     setGame: stateUpdater<Game> = undefined!;
-    disabled?: boolean | undefined;
+    disabled?: boolean;
 }
 
 export default function GameDataFormGroups({game, setGame, disabled = false}: Readonly<PropTypes>) {
