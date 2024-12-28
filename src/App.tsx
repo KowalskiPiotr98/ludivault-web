@@ -1,4 +1,3 @@
-import './App.css';
 import NavBar from "./navBar.tsx";
 import {Outlet, Route, Routes} from "react-router";
 import PlatformsList from "./components/platforms/platformsList.tsx";
@@ -21,14 +20,12 @@ export default function App() {
 }
 
 function Layout() {
-    return <>
-        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={'en-gb'}>
-            <NavBar/>
-            <main>
-                <Container maxWidth={"xl"}>
-                    <Outlet/>
-                </Container>
-            </main>
-        </LocalizationProvider>
-    </>
+    return <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={'en-gb'}>
+        <NavBar/>
+        <main>
+            <Container maxWidth={"xl"}>
+                <Outlet/>
+            </Container>
+        </main>
+    </LocalizationProvider>
 }

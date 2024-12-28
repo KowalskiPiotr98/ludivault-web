@@ -6,7 +6,7 @@ class PropTypes {
     sx?: SxProps<Theme>;
 }
 
-export default function InlineStack({children, sx}: PropTypes) {
+export default function InlineStack({children, sx}: Readonly<PropTypes>) {
     return <Stack direction={"row"} sx={{width: "100%", overflow: "hidden", ...sx}}>
         {children}
     </Stack>

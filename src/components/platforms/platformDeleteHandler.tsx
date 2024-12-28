@@ -7,7 +7,7 @@ class PropTypes {
     platform: Platform = undefined!;
 }
 
-export default function PlatformDeleteHandler({platform}: PropTypes) {
+export default function PlatformDeleteHandler({platform}: Readonly<PropTypes>) {
     const {remover, removing} = usePlatformRemover();
     const platforms = usePlatformsIndex();
 

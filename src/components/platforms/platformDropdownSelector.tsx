@@ -12,7 +12,7 @@ class PropTypes {
     required?: boolean | undefined;
 }
 
-export default function PlatformDropdownSelector({id = undefined, selectedId, required = undefined, onSelected, disabled = false}: PropTypes) {
+export default function PlatformDropdownSelector({id = undefined, selectedId, required = undefined, onSelected, disabled = false}: Readonly<PropTypes>) {
     const {platforms, loading} = usePlatforms();
 
     const selectedCallback = (e: SelectChangeEvent) => {

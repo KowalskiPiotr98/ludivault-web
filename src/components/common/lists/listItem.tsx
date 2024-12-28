@@ -6,7 +6,7 @@ class PropTypes {
     children: ReactNode | ReactNode[] = undefined!;
 }
 
-export default function ListItem({children}: PropTypes) {
+export default function ListItem({children}: Readonly<PropTypes>) {
     return <Paper sx={{p: 1}}>
         <InlineStack>{children}</InlineStack>
     </Paper>

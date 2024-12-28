@@ -5,6 +5,6 @@ class PropTypes {
     children: ReactNode | ReactNode[] = undefined!;
 }
 
-export default function ListItems({children}: PropTypes) {
+export default function ListItems({children}: Readonly<PropTypes>) {
     return <Stack spacing={2}>{children}</Stack>
 }

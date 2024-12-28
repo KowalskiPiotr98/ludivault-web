@@ -5,6 +5,6 @@ class PropTypes {
     disabled?: boolean;
 }
 
-export default function FormSaveButton({onClick, disabled}: PropTypes) {
+export default function FormSaveButton({onClick, disabled}: Readonly<PropTypes>) {
     return <FormActionButton text={"Save"} disabled={disabled} onClick={onClick}/>
 }

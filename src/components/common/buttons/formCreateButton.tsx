@@ -4,6 +4,6 @@ class PropTypes {
     onClick?: () => void = undefined!;
 }
 
-export default function FormCreateButton({onClick}: PropTypes) {
+export default function FormCreateButton({onClick}: Readonly<PropTypes>) {
     return <FormActionButton text={"Create"} onClick={onClick}/>
 }

@@ -10,7 +10,7 @@ class PropTypes {
     game: Game = undefined!;
 }
 
-export default function GameListItem({game}: PropTypes) {
+export default function GameListItem({game}: Readonly<PropTypes>) {
     const navigate = useNavigate();
 
     return <ListItem>

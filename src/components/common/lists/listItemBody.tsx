@@ -5,7 +5,7 @@ class PropTypes {
     children: string | ReactNode | ReactNode[] = undefined!;
 }
 
-export default function ListItemBody({children}: PropTypes) {
+export default function ListItemBody({children}: Readonly<PropTypes>) {
     return <Box sx={{flex: 1, overflow: "hidden", textWrap: "wrap"}}>
         <Typography>
             {children}

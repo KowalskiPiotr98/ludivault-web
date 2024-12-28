@@ -8,7 +8,7 @@ class PropTypes {
     disabled?: boolean = false;
 }
 
-export default function PlatformDataFields({platform, setPlatform, disabled = false}: PropTypes) {
+export default function PlatformDataFields({platform, setPlatform, disabled = false}: Readonly<PropTypes>) {
     return <>
         <FormGroup sx={{p: 1}}>
             <TextField label={"Name"} placeholder={"Full name of the platform (eg. Sony PlayStation 5)"} value={platform.name} slotProps={{htmlInput: {maxLength: 200}}} disabled={disabled} required onChange={e => setPlatform(prevState => ({...prevState, name: e.target.value}))}/>

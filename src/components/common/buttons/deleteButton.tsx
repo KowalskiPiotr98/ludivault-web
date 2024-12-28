@@ -6,11 +6,11 @@ import {Button} from "@mui/material";
 
 class PropTypes {
     onTrigger: () => void = undefined!;
-    title?: string | undefined;
+    title?: string;
     disabled?: boolean = false;
 }
 
-export default function DeleteButton({onTrigger, disabled = false, title = undefined}: PropTypes) {
+export default function DeleteButton({onTrigger, disabled = false, title = undefined}: Readonly<PropTypes>) {
     const [clicked, setClicked] = useState(false);
 
     const reset = () => setClicked(false);
