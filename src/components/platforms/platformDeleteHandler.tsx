@@ -21,7 +21,5 @@ export default function PlatformDeleteHandler({platform}: Readonly<PropTypes>) {
         platforms.deleteItem(platform);
     }
 
-    return <>
-        <DeleteButton onTrigger={submit} disabled={removing} title={`Delete platform ${platform.name}`}/>
-    </>
+    return <DeleteButton onTrigger={submit} disabled={removing} title={`Delete platform ${platform.name}`}/>
 }

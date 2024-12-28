@@ -24,7 +24,7 @@ export function useGameEditor() {
                 return undefined;
             }
 
-            throw "Unexpected response code received when updating a game";
+            throw new Error("Unexpected response code received when updating a game");
         } finally {
             setEditing(false);
         }

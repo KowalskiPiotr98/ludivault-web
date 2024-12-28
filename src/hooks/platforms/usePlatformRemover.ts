@@ -26,7 +26,7 @@ export function usePlatformRemover() {
                 return tempError;
             }
 
-            throw "Unexpected response code received when removing a platform";
+            throw new Error("Unexpected response code received when removing a platform");
         } finally {
             setRemoving(false);
         }

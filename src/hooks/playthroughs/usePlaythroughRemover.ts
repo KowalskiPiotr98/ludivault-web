@@ -21,7 +21,7 @@ export function usePlaythroughRemover() {
                 return tempError;
             }
 
-            throw "Unexpected response code received when removing a playthrough";
+            throw new Error("Unexpected response code received when removing a playthrough");
         } finally {
             setRemoving(false);
         }

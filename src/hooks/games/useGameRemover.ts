@@ -21,7 +21,7 @@ export function useGameRemover() {
                 return tempError;
             }
 
-            throw "Unexpected response code received when removing a game";
+            throw new Error("Unexpected response code received when removing a game");
         } finally {
             setRemoving(false);
         }
