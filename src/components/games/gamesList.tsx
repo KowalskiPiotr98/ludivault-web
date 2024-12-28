@@ -1,5 +1,5 @@
 import useGames from "../../hooks/games/useGames.ts";
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import PageData, {getOffset} from "../../models/pageData.ts";
 import {GamesIndexContext, GamesIndexContextHandler} from "../../contexts/gamesIndexContext.ts";
 import {PaginationContext, PaginationContextHandler} from "../../contexts/paginationContext.ts";
@@ -13,8 +13,8 @@ export default function GamesList() {
     const [pageData, setPageData] = useState<PageData>(new PageData());
     const {games, setGames, loading} = useGames(getOffset(pageData), pageData.size);
 
-    const contextHandler = new GamesIndexContextHandler(games, setGames);
-    const paginationContext = new PaginationContextHandler(pageData, setPageData);
+    const contextHandler = useMemo(() => new GamesIndexContextHandler(games, setGames), [games, setGames]);
+    const paginationContext = useMemo(() => new PaginationContextHandler(pageData, setPageData), [pageData, setPageData]);
 
     useEffect(() => {
         if (!games)
