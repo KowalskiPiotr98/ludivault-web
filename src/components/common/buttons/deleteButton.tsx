@@ -6,7 +6,7 @@ import {Button} from "@mui/material";
 
 class PropTypes {
     onTrigger: () => void = undefined!;
-    title?: string | undefined;
+    title?: string;
     disabled?: boolean = false;
 }
 
