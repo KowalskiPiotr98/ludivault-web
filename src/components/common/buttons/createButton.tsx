@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 
 class PropTypes {
     onClick: () => void = undefined!;
-    title?: string | undefined;
+    title?: string;
     disabled?: boolean = false;
 }
 
