@@ -12,6 +12,6 @@ export default function GameEditSidebar() {
     ]
 
     return <div>
-        {items.map((item, index) => <div key={index}>{item}</div>)}
+        {items.map((item) => <div key={item.key}>{item}</div>)}
     </div>
 }
