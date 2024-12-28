@@ -6,7 +6,7 @@ class PropTypes {
     disabled?: boolean;
 }
 
-export default function FormActionButton({onClick, text, disabled}: PropTypes) {
+export default function FormActionButton({onClick, text, disabled}: Readonly<PropTypes>) {
     return <Box sx={{p: 1, display: "flex", justifyContent: "right"}}>
         <Button type={"submit"} variant={"contained"} disabled={disabled} onClick={() => onClick?.()}>{text}</Button>
     </Box>

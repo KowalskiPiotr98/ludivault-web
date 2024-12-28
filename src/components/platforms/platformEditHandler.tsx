@@ -13,7 +13,7 @@ class PropTypes {
     platform: Platform = undefined!;
 }
 
-export default function PlatformEditHandler({platform}: PropTypes) {
+export default function PlatformEditHandler({platform}: Readonly<PropTypes>) {
     const [isEditing, setIsEditing] = useState(false);
     const [editingPlatform, setEditingPlatform] = useState(platform);
     const platforms = usePlatformsIndex();

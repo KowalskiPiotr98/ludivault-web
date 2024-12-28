@@ -7,7 +7,7 @@ class PropTypes {
     playthrough: Playthrough = undefined!;
 }
 
-export default function PlaythroughRemover({playthrough}: PropTypes) {
+export default function PlaythroughRemover({playthrough}: Readonly<PropTypes>) {
     const {remover, removing} = usePlaythroughRemover();
     const playthroughs = usePlaythroughsContext();
 

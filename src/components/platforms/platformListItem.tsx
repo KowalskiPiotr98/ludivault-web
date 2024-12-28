@@ -11,7 +11,7 @@ class PropTypes {
     item: Platform = undefined!;
 }
 
-export default function PlatformListItem({item}: PropTypes) {
+export default function PlatformListItem({item}: Readonly<PropTypes>) {
     return <ListItem>
         <ListItemBody>
             <Grid2 container>

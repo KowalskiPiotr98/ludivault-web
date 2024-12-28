@@ -10,7 +10,7 @@ class PropTypes {
     playthrough: Playthrough = undefined!;
 }
 
-export default function PlaythroughItem({playthrough}: PropTypes) {
+export default function PlaythroughItem({playthrough}: Readonly<PropTypes>) {
     return <ListItem>
         <ListItemBody>
             {playthrough.startDate.toLocaleString()}-{playthrough.endDate?.toLocaleString() ?? 'INCOMPLETE'}

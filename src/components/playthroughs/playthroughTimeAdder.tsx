@@ -14,7 +14,7 @@ class PropTypes {
     playthrough: Playthrough = undefined!;
 }
 
-export default function PlaythroughTimeAdder({playthrough}: PropTypes) {
+export default function PlaythroughTimeAdder({playthrough}: Readonly<PropTypes>) {
     const [open, setOpen] = useState(false);
     const [anchor, setAnchor] = useState<HTMLButtonElement>();
     const [addHours, setAddHours] = useState<number>(0);

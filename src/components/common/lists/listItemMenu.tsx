@@ -5,7 +5,7 @@ class PropTypes {
     children: ReactNode | ReactNode[] = undefined!;
 }
 
-export default function ListItemMenu({children}: PropTypes) {
+export default function ListItemMenu({children}: Readonly<PropTypes>) {
     return <Box>
         {children}
     </Box>

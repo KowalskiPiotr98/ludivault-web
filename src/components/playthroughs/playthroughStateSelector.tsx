@@ -9,7 +9,7 @@ class PropTypes {
     required?: boolean;
 }
 
-export default function PlaythroughStateSelector({status, setStatus, name, required, id}: PropTypes) {
+export default function PlaythroughStateSelector({status, setStatus, name, required, id}: Readonly<PropTypes>) {
     return <Select id={id} name={name} required={required} value={status} onChange={e => setStatus(+e.target.value)}>
         <MenuItem value={'0'}>In progress</MenuItem>
         <MenuItem value={'1'}>Completed</MenuItem>

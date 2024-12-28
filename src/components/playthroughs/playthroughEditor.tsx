@@ -17,7 +17,7 @@ class PropTypes {
     playthrough: Playthrough = undefined!;
 }
 
-export default function PlaythroughEditor({playthrough}: PropTypes) {
+export default function PlaythroughEditor({playthrough}: Readonly<PropTypes>) {
     const [open, setOpen] = useState(false);
     const [anchor, setAnchor] = useState<HTMLButtonElement>();
     const [editPlay, setEditPlay] = useState(playthrough);

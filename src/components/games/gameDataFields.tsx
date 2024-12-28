@@ -12,7 +12,7 @@ class PropTypes {
     disabled?: boolean | undefined;
 }
 
-export default function GameDataFormGroups({game, setGame, disabled = false}: PropTypes) {
+export default function GameDataFormGroups({game, setGame, disabled = false}: Readonly<PropTypes>) {
     useEffect(() => {
         if (game.releaseDate === undefined)
             return;

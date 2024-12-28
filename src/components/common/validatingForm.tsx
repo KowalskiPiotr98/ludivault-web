@@ -5,7 +5,7 @@ class PropTypes {
     onValidSubmit: () => void = undefined!;
 }
 
-export default function ValidatingForm({children, onValidSubmit}: PropTypes) {
+export default function ValidatingForm({children, onValidSubmit}: Readonly<PropTypes>) {
     const submitter = (e: FormEvent) => {
         e.preventDefault();
         // @ts-expect-error: for some reason, checkValidity() is not known to the transpiler

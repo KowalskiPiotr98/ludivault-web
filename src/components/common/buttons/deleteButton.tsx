@@ -10,7 +10,7 @@ class PropTypes {
     disabled?: boolean = false;
 }
 
-export default function DeleteButton({onTrigger, disabled = false, title = undefined}: PropTypes) {
+export default function DeleteButton({onTrigger, disabled = false, title = undefined}: Readonly<PropTypes>) {
     const [clicked, setClicked] = useState(false);
 
     const reset = () => setClicked(false);

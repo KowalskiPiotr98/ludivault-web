@@ -5,6 +5,6 @@ class PropTypes {
     sx?: SxProps<Theme>;
 }
 
-export default function WrappableText({text, sx}: PropTypes) {
+export default function WrappableText({text, sx}: Readonly<PropTypes>) {
     return <Box sx={{textWrap: "wrap", wordWrap: "break-word", display: "inline", ...sx}}>{text}</Box>
 }

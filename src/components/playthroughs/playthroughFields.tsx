@@ -9,7 +9,7 @@ class PropTypes {
     setPlaythrough: stateUpdater<Playthrough> = undefined!;
 }
 
-export default function PlaythroughFields({playthrough, setPlaythrough}: PropTypes) {
+export default function PlaythroughFields({playthrough, setPlaythrough}: Readonly<PropTypes>) {
     return <>
         <FormGroup sx={{width: "100%"}}>
             <FormLabel htmlFor={`${playthrough.id}-startDate`}>Start date</FormLabel>
