@@ -1,4 +1,3 @@
-import './App.css';
 import NavBar from "./navBar.tsx";
 import {Outlet, Route, Routes} from "react-router";
 import PlatformsList from "./components/platforms/platformsList.tsx";
