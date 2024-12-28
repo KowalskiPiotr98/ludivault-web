@@ -20,14 +20,12 @@ export default function App() {
 }
 
 function Layout() {
-    return <>
-        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={'en-gb'}>
-            <NavBar/>
-            <main>
-                <Container maxWidth={"xl"}>
-                    <Outlet/>
-                </Container>
-            </main>
-        </LocalizationProvider>
-    </>
+    return <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={'en-gb'}>
+        <NavBar/>
+        <main>
+            <Container maxWidth={"xl"}>
+                <Outlet/>
+            </Container>
+        </main>
+    </LocalizationProvider>
 }
