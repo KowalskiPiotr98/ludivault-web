@@ -23,22 +23,20 @@ export default function GameTitleInlineEdit() {
         setEdit(false);
     }
 
-    return <>
-        <ValidatingForm onValidSubmit={handle}>
-            <InlineStack sx={{py: 2}}>
-                {
-                    edit ?
-                        <>
-                            <TextField sx={{width: "100%"}} label={"Title"} id={"game-title"} disabled={game.loading} type={"text"} value={title} slotProps={{htmlInput: {maxLength: 500}}} required onChange={e => setTitle(e.target.value)}/>
-                            <FormCancelButton onClick={cancel}/>
-                            <FormSaveButton/>
-                        </> :
-                        <>
-                            <WrappableText sx={{width: "100%"}} text={game.game.title}/>
-                            <EditButton onClick={() => setEdit(prevState => !prevState)}/>
-                        </>
-                }
-            </InlineStack>
-        </ValidatingForm>
-    </>
+    return <ValidatingForm onValidSubmit={handle}>
+        <InlineStack sx={{py: 2}}>
+            {
+                edit ?
+                    <>
+                        <TextField sx={{width: "100%"}} label={"Title"} id={"game-title"} disabled={game.loading} type={"text"} value={title} slotProps={{htmlInput: {maxLength: 500}}} required onChange={e => setTitle(e.target.value)}/>
+                        <FormCancelButton onClick={cancel}/>
+                        <FormSaveButton/>
+                    </> :
+                    <>
+                        <WrappableText sx={{width: "100%"}} text={game.game.title}/>
+                        <EditButton onClick={() => setEdit(prevState => !prevState)}/>
+                    </>
+            }
+        </InlineStack>
+    </ValidatingForm>
 }
