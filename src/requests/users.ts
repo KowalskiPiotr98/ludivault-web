@@ -8,3 +8,10 @@ export async function getMe(): Promise<CurrentUser | undefined> {
 
     return await response.json();
 }
+
+export async function getProviders(): Promise<string[]> {
+    const response = await get("auth/providers");
+    if (!response.ok)
+        return [];
+    return await response.json();
+}

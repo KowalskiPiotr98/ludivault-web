@@ -11,6 +11,7 @@ import {CurrentUserContext, CurrentUserContextHandler} from "./contexts/currentU
 import {useEffect, useMemo, useState} from "react";
 import CurrentUser from "./models/currentUser.ts";
 import {getMe} from "./requests/users.ts";
+import LoginSelector from "./components/login/loginSelector.tsx";
 
 export default function App() {
     return <Routes>
@@ -19,6 +20,8 @@ export default function App() {
 
             <Route path={"/games"} element={<GamesList/>}/>
             <Route path={"/games/:id"} element={<GameDetailsRouter/>}/>
+
+            <Route path={"/login"} element={<LoginSelector/>}/>
         </Route>
     </Routes>
 }
