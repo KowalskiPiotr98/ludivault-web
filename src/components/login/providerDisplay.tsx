@@ -1,5 +1,5 @@
 import {faQuestion} from "@fortawesome/free-solid-svg-icons/faQuestion";
-import {Box, Link, Paper} from "@mui/material";
+import {Link, Paper} from "@mui/material";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGitAlt} from "@fortawesome/free-brands-svg-icons/faGitAlt";
 import {faDiscord} from "@fortawesome/free-brands-svg-icons/faDiscord";
