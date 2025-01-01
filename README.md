@@ -5,12 +5,6 @@ An application for easy management of gaming libraries, for people that spend to
 > [!NOTE]
 > For backend repository, go [here](https://github.com/KowalskiPiotr98/ludivault-api), and for deployment repository, go [here](https://github.com/KowalskiPiotr98/ludivault-deploy)
 
-> [!CAUTION]
-> This application does not yet support user accounts, meaning that you **MUST NOT** deploy it in a public network.
-> If you do, everyone with network access will be able to do whatever they want in your instance.
->
-> User accounts will be supported in a later version.
-
 ### Why would I need that?
 For the longest time I've been somewhat obsesed with properly documenting and noting all video games I've owned, played, completed, backlogged, or am waiting for a release.
 This app aims to make all of this easier, allowing users to properly catalogue all of their games, whether they've played them 500 times already, or are eagerly awaiting a release in the future.
