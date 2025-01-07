@@ -11,7 +11,7 @@ import ListTopButtonRow from "../common/lists/listTopButtonRow.tsx";
 
 export default function GamesList() {
     const [pageData, setPageData] = useState<PageData>(new PageData());
-    const {games, setGames, loading} = useGames(getOffset(pageData), pageData.size);
+    const {games, setGames, loading} = useGames(getOffset(pageData), pageData.size, "", undefined, undefined, undefined);
 
     const contextHandler = useMemo(() => new GamesIndexContextHandler(games, setGames), [games, setGames]);
     const paginationContext = useMemo(() => new PaginationContextHandler(pageData, setPageData), [pageData, setPageData]);
