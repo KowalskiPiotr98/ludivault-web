@@ -1,8 +1,15 @@
 import {deleteReq, get, post, put} from "../utils/requests.ts";
 import Game from "../models/game.ts";
 
-export async function getGames(limit: number, offset: number): Promise<{ games: Game[] | undefined, response: Response }> {
-    const response = await get("games", {name: "limit", value: limit.toFixed()}, {name: "offset", value: offset.toFixed()});
+export async function getGames(limit: number, offset: number, title: string, owned: boolean | undefined, released: boolean | undefined, inProgress: boolean | undefined): Promise<{ games: Game[] | undefined, response: Response }> {
+    const response = await get("games",
+        {name: "limit", value: limit.toFixed()},
+        {name: "offset", value: offset.toFixed()},
+        {name: "title", value: title},
+        {name: "owned", value: owned?.toString()},
+        {name: "released", value: released?.toString()},
+        {name: "inProgress", value: inProgress?.toString()},
+        );
     if (!response.ok)
         return {games: undefined, response};
 
