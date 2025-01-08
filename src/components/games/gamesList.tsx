@@ -8,14 +8,16 @@ import PageSelector from "../common/pageSelector.tsx";
 import GameListItems from "./gameListItems.tsx";
 import GameCreator from "./gameCreator.tsx";
 import ListTopButtonRow from "../common/lists/listTopButtonRow.tsx";
+import ListTopFilterRow from "../common/lists/listTopFilterRow.tsx";
+import GameFilter from "./gameFilter.tsx";
 
 export default function GamesList() {
     const [pageData, setPageData] = useState<PageData>(new PageData());
-    const {games, setGames, loading} = useGames(getOffset(pageData), pageData.size, "", undefined, undefined, undefined);
     const [title, setTitle] = useState<string>("");
     const [owned, setOwned] = useState<boolean>();
     const [released, setReleased] = useState<boolean>();
     const [inProgress, setInProgress] = useState<boolean>();
+    const {games, setGames, loading} = useGames(getOffset(pageData), pageData.size, title, owned, released, inProgress);
 
     const contextHandler = useMemo(() => new GamesIndexContextHandler(games, setGames, title, setTitle, owned, setOwned, released, setReleased, inProgress, setInProgress), [games, setGames, title, setTitle, owned, setOwned, released, setReleased, inProgress, setInProgress]);
     const paginationContext = useMemo(() => new PaginationContextHandler(pageData, setPageData), [pageData, setPageData]);
@@ -29,6 +31,9 @@ export default function GamesList() {
 
     return <>
         <GamesIndexContext.Provider value={contextHandler}>
+            <ListTopFilterRow>
+                <GameFilter/>
+            </ListTopFilterRow>
             <ListTopButtonRow>
                 <GameCreator/>
             </ListTopButtonRow>
