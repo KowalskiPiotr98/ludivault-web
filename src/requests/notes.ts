@@ -1,5 +1,5 @@
 import {deleteReq, get, post, put} from "../utils/requests.ts";
-import Playthrough, {playthroughSorter} from "../models/playthrough.ts";
+import {playthroughSorter} from "../models/playthrough.ts";
 import Note from "../models/note.ts";
 
 export async function getNoteTitles(gameId: string): Promise<{ notes: Note[] | undefined, response: Response }> {
@@ -7,7 +7,7 @@ export async function getNoteTitles(gameId: string): Promise<{ notes: Note[] | u
     if (!response.ok)
         return {notes: undefined, response};
 
-    const tempNotes: Note[] = await response.json();
+    const tempNotes = await response.json();
     return {
         notes: tempNotes.map(parseNoteFromJson).sort(playthroughSorter),
         response,
@@ -58,9 +58,9 @@ async function parseNoteFromResponse(response: Response): Promise<Note> {
     return parseNoteFromJson(value);
 }
 
-function parseNoteFromJson(value: any): Note {
-    return {
+function parseNoteFromJson(value: {addedOn: string}): Note {
+    return <Note>{
         ...value,
-        addedOn: value.addedOn ? new Date(Date.parse(value.addedOn)) : undefined,
+        addedOn: value.addedOn ? new Date(Date.parse(value.addedOn)) : new Date(Date.now()),
     };
 }
