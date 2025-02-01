@@ -4,10 +4,12 @@ import Note from "../models/note.ts";
 
 export class NotesContextHandler {
     public notes: Note[];
+    public readonly gameId: string;
 
     private readonly setNotesInternal: stateUpdater<Note[]>;
 
-    constructor(notes: Note[], setNotes: stateUpdater<Note[]>) {
+    constructor(gameId: string, notes: Note[], setNotes: stateUpdater<Note[]>) {
+        this.gameId = gameId;
         this.notes = notes;
         this.setNotesInternal = setNotes;
     }
